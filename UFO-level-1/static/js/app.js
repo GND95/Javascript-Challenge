@@ -10,12 +10,15 @@ function runEnter() {
     var inputElement = d3.select("#datetime"); // Select the input element and get the raw HTML node
     var inputValue = inputElement.property("value"); // Get the value property of the input element
     //filter the original array to only include dates which match the date value that the user inputs
-    var filteredData = tableData.filter(UFO => UFO.datetime === inputValue);
+    var filteredData = [];
+    filteredData = tableData.filter(UFO => UFO.datetime === inputValue);
 
     console.log(inputValue);
     console.log(filteredData);
 
     var table = d3.select("tbody"); // Select the table element
+    //clear the table before appending new results to it
+    table.html("");
     //add data to the table
     filteredData.forEach((i) => {
         var row = table.append("tr");
